@@ -1,20 +1,7 @@
-cmake_minimum_required(VERSION 2.6)
-set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/modules")
-include(${CMAKE_CURRENT_SOURCE_DIR}/modules/Rock.cmake)
-rock_init(cmake 1.0)
+cmake_minimum_required(VERSION 2.8)
 
-configure_file(modules/rock-config.cmake.in rock-config.cmake @ONLY)
-install(FILES
-    modules/FindBoost.cmake
-    modules/FindGem.cmake
-    modules/FindNumpy.cmake
-    modules/FindRuby.cmake
-    modules/FindSISL.cmake
-    modules/ListMacros.cmake
-    modules/PythonBind.cmake
-    modules/PythonInstallPath.cmake
-    modules/Rock.cmake
-    modules/RockRuby.cmake
-    ${CMAKE_CURRENT_BINARY_DIR}/rock-config.cmake
-    DESTINATION share/rock/cmake)
+set( MODULE_TARGET_DIR "cmake-${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION}" )
+
+install(FILES modules/FindGem.cmake DESTINATION share/${MODULE_TARGET_DIR}/Modules)
+
 
